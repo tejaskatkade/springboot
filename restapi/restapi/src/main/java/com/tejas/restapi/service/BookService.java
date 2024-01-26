@@ -2,7 +2,7 @@ package com.tejas.restapi.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
+//import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 //import org.springframework.stereotype.Component;
@@ -32,12 +32,23 @@ public class BookService {
         return list;
     }
     public Book  getBookById(int id){
-        for (Book book : list) {
-            if(id == book.getId())
-                return book;
+        //way-1
+        // for (Book book : list) {
+        //     if(id == book.getId())  {
+        //         return book;
+        //     }                 
+        // }
+        // return null;
+        
+        // way-2 
+        Book book = null;
+        try {
+            book = list.stream().filter(e->e.getId() == id).findFirst().get();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return null;
-        //return list.stream().filter(e->e.getId() == id).findFirst().get();   
+        return book;
+          
     }
     public Book addBook(Book book){
         list.add(book);
