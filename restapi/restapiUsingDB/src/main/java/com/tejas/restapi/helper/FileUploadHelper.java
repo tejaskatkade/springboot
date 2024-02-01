@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,9 +14,15 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class FileUploadHelper {
     // Path where we want to store data
-    public final String UPLOAD_DIR = "D:\\Code\\springboot\\restapi\\restapiUsingDB\\src\\main\\resources\\static\\image";
+    // public final String UPLOAD_DIR = "D:\\Code\\springboot\\restapi\\restapiUsingDB\\src\\main\\resources\\static\\image";
     
     
+    public final String UPLOAD_DIR = new ClassPathResource("\\static\\image").getFile().getAbsolutePath(); 
+    
+   FileUploadHelper() throws Exception{
+
+    }
+
     public boolean uploadFile(MultipartFile multipartfFile){
     
         boolean val = false;
