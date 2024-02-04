@@ -1,8 +1,7 @@
 package com.project.BlogApp.controller;
 
 import java.util.List;
-import java.util.Map;
-
+//import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.project.BlogApp.paylod.APIResponse;
 import com.project.BlogApp.paylod.UserDto;
 import com.project.BlogApp.service.UserService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/user")
@@ -24,41 +26,42 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    //post
+    // post add
 
-    @PostMapping("/create")
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
-       UserDto dto = userService.createUser(userDto);
-       return new ResponseEntity<>(dto,HttpStatus.CREATED);
+    @PostMapping("/")
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
+        UserDto dto = userService.createUser(userDto);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
-    //put
+    // put - update
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto,@PathVariable("userId") Integer id){
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable("id") Integer id) {
         UserDto updatedUser = userService.updateUser(userDto, id);
         return ResponseEntity.ok(updatedUser);
     }
 
-
-    //get
-    @GetMapping("/get/{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable("userId") Integer id){
-       UserDto dto = userService.getUserById(id);
-       return new ResponseEntity<>(dto,HttpStatus.OK);
-    }
-    @GetMapping("/get")
-    public ResponseEntity<List<UserDto>> getUsers(){
-       List<UserDto> users = userService.getAllUsers();
-       return new ResponseEntity<>(users,HttpStatus.OK);
+    // get
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") Integer id) {
+        UserDto dto = userService.getUserById(id);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    //delete
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("userId") Integer id){
-        
-        deleteUser(id);
-        return ResponseEntity.ok(Map.of("Message","User DeletedSuccessfully"));
+    @GetMapping("/")
+    public ResponseEntity<List<UserDto>> getUsers() {
+        List<UserDto> users = userService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
-    
+
+    // delete
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id) {
+
+        userService.deleteUser(id);
+        // return ResponseEntity.ok(Map.of("Message","User DeletedSuccessfully"));
+        return new ResponseEntity<>(new APIResponse("User Deleted Successfully", true), HttpStatus.OK);
+    }
+
 }

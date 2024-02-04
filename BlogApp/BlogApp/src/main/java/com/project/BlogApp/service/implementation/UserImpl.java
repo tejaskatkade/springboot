@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.BlogApp.entity.User;
-import com.project.BlogApp.exception.UserNotFoundException;
+import com.project.BlogApp.exception.ResourceNotFoundException;
 import com.project.BlogApp.paylod.UserDto;
 import com.project.BlogApp.repository.UserRepo;
 import com.project.BlogApp.service.UserService;
@@ -26,7 +26,7 @@ public class UserImpl implements UserService {
     @Override
     public UserDto updateUser(UserDto userDto, Integer userId) {
 
-        User user = this.userRepo.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        User user = this.userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException(userId));
         user.setId(userDto.getId());
         user.setEmail(userDto.getEmail());
         user.setName(userDto.getName());
@@ -40,7 +40,7 @@ public class UserImpl implements UserService {
     @Override
     public UserDto getUserById(Integer userId) {
 
-        User user = this.userRepo.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        User user = this.userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException(userId));
         return userToUserDto(user);
     }
 
@@ -59,7 +59,7 @@ public class UserImpl implements UserService {
 
     @Override
     public void deleteUser(Integer userId) {
-        User user = userRepo.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        User user = userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException(userId));
         userRepo.delete(user);
     }
 
