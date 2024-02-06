@@ -20,13 +20,15 @@ public class CategoryImpl implements CategoryService {
     @Autowired
     private CategoryRepo categoryRepo;
     
-    ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    ModelMapper modelMapper;
+    //ModelMapper modelMapper = new ModelMapper();
 
    
     @Override
     public CategoryDto createCategory(CategoryDto categoryDto) {
     
-        Categories category = modelMapper.map(categoryDto, com.project.BlogApp.entity.Categories.class);
+        Categories category = modelMapper.map(categoryDto,Categories.class);
 
         // Category category2 = categoryRepo.save(category);
         // return modelMapper.map(categoryRepo.save(category),CategoryDto.class);
@@ -38,7 +40,7 @@ public class CategoryImpl implements CategoryService {
     @Override
     public CategoryDto updateCategory(CategoryDto categoryDto, Integer categoryId) {
     
-        Categories category = categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException(categoryId));
+        Categories category = categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category",categoryId));
         
         category.setCategory_id(categoryDto.getCategory_id());
         category.setTitle(categoryDto.getTitle());
@@ -52,7 +54,7 @@ public class CategoryImpl implements CategoryService {
 
     @Override
     public CategoryDto getCategoryById(Integer categoryId) {
-        Categories category = categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException(categoryId));
+        Categories category = categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category",categoryId));
         return modelMapper.map(category, CategoryDto.class);
     }
 
@@ -66,7 +68,7 @@ public class CategoryImpl implements CategoryService {
 
     @Override
     public void deleteCategory(Integer categoryId) {
-        categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException(categoryId));
+        categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category",categoryId));
         categoryRepo.deleteById(categoryId);
     }
     

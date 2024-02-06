@@ -31,7 +31,7 @@ public class UserController {
     @PostMapping("/")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         UserDto dto = userService.createUser(userDto);
-        return new ResponseEntity<>(dto, HttpStatus.CREATED);
+        return new ResponseEntity<UserDto>(dto, HttpStatus.CREATED);
     }
 
     // put - update
@@ -39,7 +39,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable("id") Integer id) {
         UserDto updatedUser = userService.updateUser(userDto, id);
-        return ResponseEntity.ok(updatedUser);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     // get

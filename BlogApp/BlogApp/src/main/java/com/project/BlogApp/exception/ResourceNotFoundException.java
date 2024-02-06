@@ -2,8 +2,8 @@ package com.project.BlogApp.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 
-    public ResourceNotFoundException(int id) {
-        super("User with id = " + id + " not found");
+    public ResourceNotFoundException(String resourceName, int id) {
+        super(resourceName+" with id : " + id + " not found");
     }
 
 }

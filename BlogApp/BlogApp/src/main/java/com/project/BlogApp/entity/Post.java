@@ -1,41 +1,51 @@
 package com.project.BlogApp.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class Categories {
-    
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer category_id;
+    private Integer post_id;
 
-    String title;
+    @Column(name = "post_name", nullable = false)
+    private String name;
+
     @Column(length = 100)
+    private String content;
 
-    String description;
+    private Date date;
 
-    @OneToMany(mappedBy = "categories", cascade =CascadeType.ALL)
-    @JsonIgnore
-    List<Post> posts = new ArrayList<>();
+    @ManyToOne
+    @NotNull
+    @JsonManagedReference
+    @JoinColumn(name = "category_id")
+    private Categories categories;
+
+    @ManyToOne
+    @NotNull
+    @JsonManagedReference
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
