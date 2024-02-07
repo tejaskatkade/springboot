@@ -32,7 +32,7 @@ public class UserImpl implements UserService {
         user.setName(userDto.getName());
         user.setPassword(userDto.getPassword());
         user.setAbout(userDto.getAbout());
-
+        userRepo.save(user);
         return userToUserDto(user);
 
     }
