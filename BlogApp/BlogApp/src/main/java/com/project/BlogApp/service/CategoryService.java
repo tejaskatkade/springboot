@@ -7,7 +7,7 @@ import com.project.BlogApp.paylod.CategoryDto;
 public interface CategoryService {
     CategoryDto createCategory(CategoryDto categoryDto);
 
-    CategoryDto updateCategory(CategoryDto categoryDto, Integer CategoryId);
+    CategoryDto updateCategory(CategoryDto categoryDto, Integer postId);
 
     CategoryDto getCategoryById(Integer CategoryId);
 

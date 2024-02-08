@@ -48,7 +48,9 @@ public class PostImpl implements PostService{
         
         post.setUser(user);
         post.setCategories(categories);
-        post.setDate(Date.valueOf("2024-02-06"));
+        //post.setDate(Date.valueOf("2024-02-06"));
+        Date date = new Date(System.currentTimeMillis());
+        post.setDate(date);
         
         return modelMapper.map(postRepo.save(post),PostDto.class);
         
@@ -66,7 +68,8 @@ public class PostImpl implements PostService{
         post.setContent(postDto.getContent());
         post.setCategories(post.getCategories());
         post.setUser(post.getUser());
-
+        post.setFile(postDto.getFile());
+        postRepo.save(post);
         return modelMapper.map(post , PostDto.class);
     }
 

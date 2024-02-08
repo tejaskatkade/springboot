@@ -34,4 +34,8 @@ public class User {
     @JsonIgnore
     List<Post> posts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade =CascadeType.ALL)
+    @JsonIgnore
+    List<Comment> comments = new ArrayList<>();
+
 }
