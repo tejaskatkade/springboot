@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.exam.app.entity.User;
 import com.exam.app.service.UserService;
+//import com.exam.app.entity.User;
 
 @SpringBootApplication
 public class AppApplication implements CommandLineRunner {
@@ -22,10 +22,10 @@ public class AppApplication implements CommandLineRunner {
 	public void run(String... args) {
 		System.out.println("Okay  ...!");
 
-		User user = new User(4, "Mahendra", "msd", "msd@gmail.com", "67891", "6543217893", "pqr.png", "user",false);
-		User u = userService.createUser(user);
+		// User user = new User(4, "Mahendra", "msd", "msd@gmail.com", "67891", "6543217893", "pqr.png", "user",false);
+		// User u = userService.createUser(user);
 
-		System.out.println(u.getUserName());
+		// System.out.println(u.getUserName());
 	}
 
 }

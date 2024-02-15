@@ -1,5 +1,7 @@
 package com.exam.app.service.Implement;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ public class UserImpl implements UserService{
     UserRepo userRepo;
 
 
+    // create user
     @Override
     public User createUser(User user) {
 
@@ -28,6 +31,47 @@ public class UserImpl implements UserService{
             userRepo.save(user);
         }
         return user;
+    }
+
+    // get user
+    @Override
+    public User getUser(String userName){
+        User user = userRepo.findByUserName(userName);
+
+        if(user == null){
+            System.out.println("Username Not Exist");
+            return null;
+        }else{
+            return user;
+        }
+    }
+
+    //Override
+    public List<User> getAllUser(){
+        return userRepo.findAll();
+    }
+
+    //Delete User
+    @Override
+    public void deleteUser(Long id){
+        userRepo.deleteById(id);
+    }
+
+    //update User
+    @Override
+
+    public User updateUser(User user ,String UserName){
+        User user1 = userRepo.findByUserName(UserName);
+        user1.setUserName(user.getUserName());
+        user1.setEmail(user.getEmail());
+        user1.setName(user.getName());
+        user1.setPassword(user.getPassword());
+        user1.setPhone(user.getPhone());
+        user1.setProfile(user.getProfile());
+
+        userRepo.save(user1);
+        
+        return user1;
     }
     
 }
