@@ -1,0 +1,12 @@
+.container{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+form{
+    text-align: center;
+    width: 100%;
+}
+
+button{
+    margin: 2px;
+}

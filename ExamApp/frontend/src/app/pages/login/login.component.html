@@ -1,0 +1,26 @@
+
+<div>
+    <form (ngSubmit)="formSubmit()">
+      
+      <h1>Register Here !</h1>
+      <!--User Name -->
+      <mat-form-field class="container" appearance="outline">
+        <mat-label>Username</mat-label>
+        <mat-hint>Username must be UNIQUE</mat-hint>
+        <input required [(ngModel)]="user.userName" name="userName" matInput placeholder="Enter Username">
+      </mat-form-field>
+  
+      <!-- Password -->
+      <mat-form-field class="container" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input required type="password" [(ngModel)]="user.password" name="password" matInput placeholder="Enter Your Email">
+      </mat-form-field>
+      
+     
+      <div>
+        <!-- <button type="submit" mat-raised-button color="primary">Submit</button> -->
+        <a mat-raised-button href="https://www.google.com/" target="_blank">Login</a>
+      </div>
+    </form>
+</div>
+  

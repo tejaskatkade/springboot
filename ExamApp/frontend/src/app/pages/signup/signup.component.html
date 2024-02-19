@@ -1,0 +1,44 @@
+<div>
+  <form (ngSubmit)="formSubmit()">
+    
+    <h1>Register Here !</h1>
+    <!--User Name -->
+    <mat-form-field class="container" appearance="outline">
+      <mat-label>Username</mat-label>
+      <mat-hint>Username must be UNIQUE</mat-hint>
+      <input required [(ngModel)]="user.userName" name="userName" matInput placeholder="Enter Username">
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field class="container" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input required type="password" [(ngModel)]="user.password" name="password" matInput placeholder="Enter Your Email">
+    </mat-form-field>
+    
+    <!-- Name -->
+    <mat-form-field class="container" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input required [(ngModel)]="user.name" name="name" matInput placeholder="Enter Your Name">
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field class="container" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input required [(ngModel)]="user.email" name="email" type="email" matInput placeholder="Enter Your Email">
+    </mat-form-field>
+    
+    <!-- Mobile Number -->
+    <mat-form-field class="container" appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input required type="number" [(ngModel)]="user.phone" name="phone" matInput placeholder="Enter Mobile Number">
+    </mat-form-field>
+
+    <div class="button">
+
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+      <button type="reset" mat-raised-button color="accent">Reset</button>
+    </div>
+  </form>
+</div>
+
+<!-- <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a> -->
