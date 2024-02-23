@@ -1,10 +1,10 @@
-package com.secure.JWTAuth.service;
+package com.secure.BasicAuth.service;
 
 import java.util.List;
 
 
 
-import com.secure.JWTAuth.model.User;
+import com.secure.BasicAuth.model.User;
 
 
 public interface UserService {

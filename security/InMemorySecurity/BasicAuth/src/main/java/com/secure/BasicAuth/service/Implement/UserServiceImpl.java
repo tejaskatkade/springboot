@@ -1,10 +1,10 @@
-package com.secure.JWTAuth.service.Implement;
+package com.secure.BasicAuth.service.Implement;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.secure.JWTAuth.model.User;
-import com.secure.JWTAuth.service.UserService;
+import com.secure.BasicAuth.model.User;
+import com.secure.BasicAuth.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
