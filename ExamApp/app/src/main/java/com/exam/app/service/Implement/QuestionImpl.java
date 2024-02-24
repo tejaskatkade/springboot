@@ -3,12 +3,14 @@ package com.exam.app.service.Implement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.exam.app.entity.exam.Question;
 import com.exam.app.entity.exam.Quiz;
 import com.exam.app.repo.QuestionRepo;
 import com.exam.app.service.QuestionService;
 
+@Service
 public class QuestionImpl implements QuestionService{
 
     @Autowired

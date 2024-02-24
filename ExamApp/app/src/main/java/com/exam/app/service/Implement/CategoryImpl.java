@@ -3,11 +3,13 @@ package com.exam.app.service.Implement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.exam.app.entity.exam.Category;
 import com.exam.app.repo.CategoryRepo;
 import com.exam.app.service.CategoryService;
 
+@Service
 public class CategoryImpl implements CategoryService{
 
 
