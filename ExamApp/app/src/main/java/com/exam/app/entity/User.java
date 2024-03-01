@@ -17,7 +17,7 @@ public class User{
     private String password;
     private String phone;
     private String profile;
-    private String role = "normal";
+    private String role = "user";
     private boolean enabled = true;
 
     public User() {

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.exam.app.Exceptions.ResourceExistException;
 import com.exam.app.entity.User;
+import com.exam.app.exception.ResourceExistException;
 import com.exam.app.repo.UserRepo;
 import com.exam.app.service.UserService;
 

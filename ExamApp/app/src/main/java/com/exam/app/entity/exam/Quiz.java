@@ -24,7 +24,7 @@ public class Quiz {
     private String description;
     private String maxMarks;
     private String numberOfQuestion;
-    private boolean activeStatus = false;
+    private boolean active = false;
 
     @ManyToOne
     private Category category;
@@ -39,13 +39,13 @@ public class Quiz {
    
 
     public Quiz(Long qid, String title, String description, String maxMarks, String numberOfQuestion,
-            boolean activeStatus, Category category, Set<Question> questions) {
+            boolean active, Category category, Set<Question> questions) {
         this.qid = qid;
         this.title = title;
         this.description = description;
         this.maxMarks = maxMarks;
         this.numberOfQuestion = numberOfQuestion;
-        this.activeStatus = activeStatus;
+        this.active = active;
         this.category = category;
         this.questions = questions;
     }
@@ -116,12 +116,12 @@ public class Quiz {
         this.numberOfQuestion = numberOfQuestion;
     }
 
-    public boolean isActiveStatus() {
-        return activeStatus;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setActiveStatus(boolean activeStatus) {
-        this.activeStatus = activeStatus;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 }

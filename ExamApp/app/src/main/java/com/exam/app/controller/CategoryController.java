@@ -32,7 +32,9 @@ public class CategoryController {
 
     //update
     @PutMapping("/")
-    public ResponseEntity<Category>  updateCategory(@RequestBody Category category){
+    public ResponseEntity<Category>  updateCategory(
+        @RequestBody Category category
+    ){
         return ResponseEntity.ok(categoryService.updateCategory(category));
     }
     //get single

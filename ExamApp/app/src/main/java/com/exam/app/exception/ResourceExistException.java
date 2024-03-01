@@ -1,4 +1,4 @@
-package com.exam.app.Exceptions;
+package com.exam.app.exception;
 
 public class ResourceExistException extends RuntimeException{
     public ResourceExistException(String message){

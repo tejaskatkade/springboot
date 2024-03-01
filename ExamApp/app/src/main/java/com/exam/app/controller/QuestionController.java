@@ -48,6 +48,8 @@ public class QuestionController {
     public ResponseEntity<List<Question>>  getAllQue(){
         return ResponseEntity.ok(questionService.getAllQuestion());
     }
+
+    //get que by quiz
     @GetMapping("/quiz/{quizId}")
     public ResponseEntity<List<Question>>  getAllQueByQuiz(@PathVariable("quizId")  Long quizId){
         
@@ -55,7 +57,7 @@ public class QuestionController {
         // return ResponseEntity.ok(questionService.getQuestionOfQuiz(quiz));
 
         Quiz quiz = quizService.getQuiz(quizId);
-        List<Question> list1 = questionService.getQuestionOfQuiz(quiz);
+        List<Question> list1 = questionService.getQuestionOfQuiz(quizId);
         int size = Integer.parseInt(quiz.getNumberOfQuestion());
         if(list1.size() > size ){
             List<Question> list2 = new ArrayList<>();
@@ -71,8 +73,9 @@ public class QuestionController {
    
 
     //delete
+
     @DeleteMapping("/{queId}")
     public void deleteQuiz(@PathVariable("queId") Long queId){
-    questionService.deleteQuestion();
+        questionService.deleteQuestion(queId);
     }
 }
