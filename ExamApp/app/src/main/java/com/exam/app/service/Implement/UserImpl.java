@@ -25,7 +25,7 @@ public class UserImpl implements UserService{
 
         if(isExist != null){
             System.out.println("Username Exist");
-            throw new ResourceExistException("User already eXist in database");
+            throw new ResourceExistException("User already exist in database");
     
         }else{
             userRepo.save(user);
