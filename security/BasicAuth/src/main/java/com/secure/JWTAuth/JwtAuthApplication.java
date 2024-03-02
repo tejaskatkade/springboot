@@ -1,5 +1,4 @@
 package com.secure.JWTAuth;
-// Endpoint security with In Memory User
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
